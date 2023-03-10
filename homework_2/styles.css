@@ -1,8 +1,5 @@
-.body {
-  height: 100vh;
-  /* Set the height to 100% of the viewport height */
-  width: 100vw;
-  /* Set the width to 100% of the viewport width */
+form{
+  padding-top: 20px;
 }
 
 .desktop-header {
@@ -41,28 +38,31 @@ header h1 span {
   border: 3px solid black;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 800px) {
   .desktop-header {
     display: none;
   }
 
   .mobile-header {
     display: flex;
-    position: relative;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    align-items: center;
     padding: 20px;
     background-color: lightblue;
   }
 
   .mobile-header nav {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    position: fixed;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #ccc;
     padding: 10px 0;
+    left: 0;
   }
 
   nav ul {
@@ -83,6 +83,51 @@ header h1 span {
     color: #333;
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 10px;
   }
+
+  nav {
+    width: 100%;
+  }
+  form label, form input{
+    font-size: 12px;
+  }
+
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the form elements horizontally */
+  padding-bottom: 20px;
+}
+
+
+form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+form input[type="email"],
+form input[type="password"],
+form input[type="text"] {
+  width: 100%; /* Set the width of the form inputs to 100% */
+  max-width: 400px; /* Set a max-width to limit the size of the form inputs */
+  padding: 10px; /* Add padding for spacing */
+  margin-bottom: 20px; /* Add margin for spacing */
+  border: 1px solid #ccc; /* Add a border for styling */
+  border-radius: 5px; /* Add border radius for styling */
+  box-sizing: border-box; /* Include padding and border in the total width */
+}
+
+form input[type="submit"] {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
