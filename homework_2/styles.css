@@ -1,9 +1,21 @@
-header {
+.body {
+  height: 100vh;
+  /* Set the height to 100% of the viewport height */
+  width: 100vw;
+  /* Set the width to 100% of the viewport width */
+}
+
+.desktop-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
   background-color: lightblue;
+  flex-direction: row;
+}
+
+.mobile-header {
+  display: none;
 }
 
 nav ul {
@@ -27,4 +39,50 @@ nav ul li a {
 
 header h1 span {
   border: 3px solid black;
+}
+
+@media screen and (max-width: 500px) {
+  .desktop-header {
+    display: none;
+  }
+
+  .mobile-header {
+    display: flex;
+    position: relative;
+    padding: 20px;
+    background-color: lightblue;
+  }
+
+  .mobile-header nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ccc;
+    padding: 10px 0;
+  }
+
+  nav ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav ul li {
+    margin: 0;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
 }
