@@ -1,4 +1,4 @@
-form{
+form {
   padding-top: 20px;
 }
 
@@ -9,6 +9,7 @@ form{
   padding: 20px;
   background-color: lightblue;
   flex-direction: row;
+  border-radius: 10px;
 }
 
 .mobile-header {
@@ -21,11 +22,43 @@ nav ul {
   gap: 20px;
 }
 
+nav ul li {
+  position: relative;
+}
+
 nav ul li a {
   text-decoration: none;
   color: #333;
   font-weight: bold;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+
+nav ul li.dropdown:hover .dropdown-menu {
+  display: block;
+  right: 0;
+  left: auto;
+}
+
+nav ul li.dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  z-index: 1;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+nav ul li.dropdown .dropdown-menu li {
+  margin-bottom: 10px;
+}
+
+nav ul li.dropdown .dropdown-menu li:last-child {
+  margin-bottom: 0;
 }
 
 .logo-text {
@@ -47,7 +80,8 @@ header h1 span {
     display: flex;
     justify-content: space-between;
     position: fixed;
-    width: 100%;
+    width: calc(100% - 40px);
+    left: 0;
     bottom: 0;
     align-items: center;
     padding: 20px;
@@ -61,7 +95,7 @@ header h1 span {
     justify-content: center;
     align-items: center;
     background-color: #ccc;
-    padding: 10px 0;
+    padding: 15px 0;
     left: 0;
   }
 
@@ -89,7 +123,9 @@ header h1 span {
   nav {
     width: 100%;
   }
-  form label, form input{
+
+  form label,
+  form input {
     font-size: 12px;
   }
 
@@ -98,7 +134,8 @@ header h1 span {
 form {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center the form elements horizontally */
+  align-items: center;
+  /* Center the form elements horizontally */
   padding-bottom: 20px;
 }
 
@@ -111,13 +148,20 @@ form label {
 form input[type="email"],
 form input[type="password"],
 form input[type="text"] {
-  width: 100%; /* Set the width of the form inputs to 100% */
-  max-width: 400px; /* Set a max-width to limit the size of the form inputs */
-  padding: 10px; /* Add padding for spacing */
-  margin-bottom: 20px; /* Add margin for spacing */
-  border: 1px solid #ccc; /* Add a border for styling */
-  border-radius: 5px; /* Add border radius for styling */
-  box-sizing: border-box; /* Include padding and border in the total width */
+  width: 100%;
+  /* Set the width of the form inputs to 100% */
+  max-width: 400px;
+  /* Set a max-width to limit the size of the form inputs */
+  padding: 10px;
+  /* Add padding for spacing */
+  margin-bottom: 20px;
+  /* Add margin for spacing */
+  border: 1px solid #ccc;
+  /* Add a border for styling */
+  border-radius: 5px;
+  /* Add border radius for styling */
+  box-sizing: border-box;
+  /* Include padding and border in the total width */
 }
 
 form input[type="submit"] {
