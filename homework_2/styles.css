@@ -125,25 +125,27 @@ header h1 span {
     margin: 0;
     padding: 0;
   }
-  
+
   .menu li {
     margin-bottom: 10px;
   }
-  
+
   .menu li:last-child {
     margin-bottom: 0;
   }
-  
-  .menu-toggle-link:focus + .menu,
-  .menu:focus-within {
-  display: block;
-}
+
+  .checkbox {
+    display: none;
+  }
+
+  .checkbox:checked+.menu {
+    display: block;
+  }
 
   form label,
   form input {
     font-size: 12px;
   }
-
 }
 
 form {
