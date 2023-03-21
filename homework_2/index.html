@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Second frontend academy homework</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <header class="desktop-header">
+    <h1><span class="logo-text">My logo</span></h1>
+
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Products</a></li>
+        <li><a href="#">Careers</a></li>
+        <li class="dropdown">
+          <a href="#">More <i class="fa fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <header class="mobile-header">
+    <nav>
+      <label for="checkbox" class="menu-toggle-link">Menu</label>
+      <input type="checkbox" id="checkbox" class="checkbox">
+      <ul class="menu" id="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <form>
+    <label for="form-email">Email:</label><br>
+    <input type="email" id="form-email" name="email" required><br>
+
+    <label for="form-password">Password:</label><br>
+    <input type="password" id="form-password" name="password" minlength="8" required><br>
+
+    <label for="form-text">Text sentence:</label><br>
+    <input type="text" id="form-text" name="fname"><br>
+
+    <input type="submit" id=form-submit value="Submit">
+  </form>
+
+</body>
+
+</html>
