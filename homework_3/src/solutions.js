@@ -181,10 +181,11 @@ module.exports = {
    */
   timeoutIncrement(consumer) {
     for (var i = 1; i <= 3; i += 1) {
-      setTimeout(() => {
-        /* your function goes here, or instead of this function */
-      }, 1000)
-      consumer(i)
+      setTimeout((function (index) {
+        return function() {
+          consumer(index);
+        }
+      })(i), 1000*i);
     }
   },
 }
