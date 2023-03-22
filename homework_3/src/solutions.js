@@ -183,8 +183,8 @@ module.exports = {
     for (var i = 1; i <= 3; i += 1) {
       setTimeout(() => {
         /* your function goes here, or instead of this function */
-        consumer(i);
-      }, i*1000)
+      }, 1000)
+      consumer(i)
     }
   },
 }
