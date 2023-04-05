@@ -83,7 +83,7 @@ showAllArtworksButton.textContent = 'Show all';
 showAllArtworksButton.addEventListener('click', () => {
   const artworkElements = document.querySelectorAll('.artwork-image');
   artworkElements.forEach(artworkElement => {
-    artworkElement.style.display = 'block';
+    artworkElement.style.display = 'flex';
   });
 });
 const containerElement = document.getElementById('container');
