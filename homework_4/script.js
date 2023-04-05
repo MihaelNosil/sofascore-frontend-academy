@@ -7,6 +7,9 @@ function loadArtworks() {
 
       const titleList = document.createElement('ul');
 
+      console.log(page);
+      console.log(`https://api.artic.edu/api/v1/artworks?page=${page}&limit=10`);
+
       artworks.forEach(artwork => {
         const title = artwork.title;
         const imageUrl = artwork.image_id ? `https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg` : null;
@@ -14,58 +17,57 @@ function loadArtworks() {
         const artworkElement = document.createElement('div');
         artworkElement.classList.add('artwork-image');
 
-        const buttonElement = document.createElement('button');
-        buttonElement.textContent = 'Hide';
-        buttonElement.addEventListener('click', () => {
+        const hideArtworkButton = document.createElement('button');
+        hideArtworkButton.textContent = 'Hide';
+        hideArtworkButton.addEventListener('click', () => {
           artworkElement.style.display = 'none';
         });
 
-        const infoContainer = document.createElement('div');
-        infoContainer.classList.add('info-container');
-        infoContainer.style.display = 'none';
+        const infoArtworkContainer = document.createElement('div');
+        infoArtworkContainer.classList.add('info-container');
+        infoArtworkContainer.style.display = 'none';
 
-        const infoElement = document.createElement('p');
-        infoElement.textContent = artwork.thumbnail.alt_text;
-        infoContainer.appendChild(infoElement);
+        const infoArtworkElement = document.createElement('p');
+        infoArtworkElement.textContent = artwork.thumbnail.alt_text;
+        infoArtworkContainer.appendChild(infoArtworkElement);
 
-        if (imageUrl && title) {
-          const titleElement = document.createElement('h2');
-          titleElement.textContent = title;
-          artworkElement.appendChild(titleElement);
-
-          const imageElement = document.createElement('img');
-          imageElement.src = imageUrl;
-          imageElement.alt = title;
-
-          artworkElement.appendChild(imageElement);
-
-          artworkElement.appendChild(buttonElement);
-
-          artworkElement.appendChild(infoContainer);
-
-          const accordionButton = document.createElement('button');
-          accordionButton.textContent = 'Show more';
-          accordionButton.addEventListener('click', () => {
-            if (infoContainer.style.display === 'none') {
-              infoContainer.style.display = 'block';
-              accordionButton.textContent = 'Show less';
+        const artworkAccordionButton = document.createElement('button');
+          artworkAccordionButton.textContent = 'Show more';
+          artworkAccordionButton.addEventListener('click', () => {
+            if (infoArtworkContainer.style.display === 'none') {
+              infoArtworkContainer.style.display = 'block';
+              artworkAccordionButton.textContent = 'Show less';
             } else {
-              infoContainer.style.display = 'none';
-              accordionButton.textContent = 'Show more';
+              infoArtworkContainer.style.display = 'none';
+              artworkAccordionButton.textContent = 'Show more';
             }
           });
-          artworkElement.appendChild(accordionButton);
+
+        if (imageUrl && title) {
+          const artworkTitleElement = document.createElement('h2');
+          artworkTitleElement.textContent = title;
+          artworkElement.appendChild(artworkTitleElement);
+
+          const artworkImageElement = document.createElement('img');
+          artworkImageElement.src = imageUrl;
+          artworkImageElement.alt = title;
+
+          artworkElement.appendChild(artworkImageElement);
+          artworkElement.appendChild(hideArtworkButton);
+          artworkElement.appendChild(infoArtworkContainer);
+          artworkElement.appendChild(artworkAccordionButton);
 
 
           const containerElement = document.getElementById('container');
           containerElement.appendChild(artworkElement);
         }
       });
+
       page++;
 
       if (page <= data.pagination.total_pages) {
         const nextButton = document.createElement('button');
-        nextButton.textContent = 'Next';
+        nextButton.textContent = 'More';
         nextButton.addEventListener('click', loadArtworks);
         const containerElement = document.getElementById('container');
         containerElement.appendChild(nextButton);
@@ -76,13 +78,13 @@ function loadArtworks() {
 
 loadArtworks();
 
-const showAllButton = document.createElement('button');
-showAllButton.textContent = 'Show all';
-showAllButton.addEventListener('click', () => {
+const showAllArtworksButton = document.createElement('button');
+showAllArtworksButton.textContent = 'Show all';
+showAllArtworksButton.addEventListener('click', () => {
   const artworkElements = document.querySelectorAll('.artwork-image');
   artworkElements.forEach(artworkElement => {
     artworkElement.style.display = 'block';
   });
 });
 const containerElement = document.getElementById('container');
-containerElement.parentNode.insertBefore(showAllButton, containerElement);
+containerElement.parentNode.insertBefore(showAllArtworksButton, containerElement);

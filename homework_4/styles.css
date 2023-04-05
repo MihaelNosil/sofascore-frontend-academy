@@ -13,6 +13,12 @@ h1 {
   margin: 0 auto;
 }
 
+.artwork-image {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
 .artwork-image img {
   max-width: 100%;
   height: auto;
