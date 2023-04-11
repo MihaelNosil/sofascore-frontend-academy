@@ -1,6 +1,6 @@
 let page = 1;
 function loadArtworks() {
-  fetch('https://api.artic.edu/api/v1/artworks?page=$(page)&limit=10')
+  fetch('https://api.artic.edu/api/v1/artworks?page=${page}&limit=10')
     .then(response => response.json())
     .then(data => {
       const artworks = data.data;
