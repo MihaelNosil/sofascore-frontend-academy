@@ -27,10 +27,16 @@ export default function Input() {
   // https://www.w3schools.com/react/react_forms.asp
   const [circles, setCircles] = useState<Circle[]>([])
 
-  const onClick = (e: React.SyntheticEvent) => {
+  const handleRadiusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCurrentRadius(parseInt(event.target.value))
+  }
+
+  const onAddCircleClick = (e: React.SyntheticEvent) => {
     e.preventDefault() // prevent page changing on submit
     // store new circle in your state and then reset the selector to default radius
     // get your next circle parameters other than radius with `getRandomCircleParameters` method
+    const newCircle = getRandomCircleParameters(currentRadius)
+    setCircles([...circles, newCircle])
     setCurrentRadius(DEFAULT_SELECTED_RADIUS)
   }
 
@@ -47,9 +53,10 @@ export default function Input() {
           min="0"
           max="150"
           value={currentRadius}
+          onChange={handleRadiusChange}
         />
         </label>
-        <button type="submit" onClick={onClick}>Add another circle</button>
+        <button type="submit" onClick={onAddCircleClick}>Add another circle</button>
       </form>
       <svg viewBox={`0 0 ${VIEW_BOX_DIMENSION} ${VIEW_BOX_DIMENSION}`} style={{ width: VIEW_BOX_DIMENSION, height: VIEW_BOX_DIMENSION, border: '1px solid black' }}>
         {/* In this specific case, key is also the id of the circle since we don't delete any */}
